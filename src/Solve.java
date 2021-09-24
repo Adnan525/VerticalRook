@@ -39,6 +39,11 @@ public class Solve {
 
     public static String solve(List<List<Integer>> player1Pos,List<List<Integer>> player2Pos, int boardSize, int counter)
     {
+        //no idea why
+        if(counter%2 == 0)
+            drawTheBoard(player1Pos, player2Pos, boardSize);
+        else
+            drawTheBoard(player2Pos, player1Pos, boardSize);
         Integer least = Integer.MAX_VALUE;
         List<List<Integer>> takeMove = new ArrayList<>();
 
@@ -48,9 +53,9 @@ public class Solve {
         if(choicesForPlayer2.numMoves ==0)
         {
             if(counter%2 == 0)
-                return "player-2";
+                return "Winner : player-2";
             else
-                return "player-1";
+                return "Winner : player-1";
         }
 
         for(List<Integer> pos: choicesForPlayer2.moves.keySet())
@@ -70,6 +75,7 @@ public class Solve {
             }
         }
         swapMove(player2Pos, takeMove.get(0), takeMove.get(1));
+        System.out.println("Taking move: ("+takeMove.get(0).get(0) +"," +takeMove.get(0).get(1) +") ==> ("+takeMove.get(1).get(0)+","+takeMove.get(1).get(1)+")");
 
         return solve(player2Pos, player1Pos, boardSize, counter+1);
 
@@ -78,6 +84,34 @@ public class Solve {
     {
         pos.remove(replace);
         pos.add(value);
+    }
+
+    public static void drawTheBoard(List<List<Integer>> player1Pos,List<List<Integer>> player2Pos, int boardSize)
+    {
+        Integer[][] chessBoard = new Integer[boardSize][boardSize];
+        for(List<Integer> p1 : player1Pos)
+        {
+            chessBoard[p1.get(0)][p1.get(1)] = 2;
+        }
+        for(List<Integer> p2 : player2Pos)
+        {
+            chessBoard[p2.get(0)][p2.get(1)] = 1;
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i<= chessBoard.length-1; i++)
+        {
+            for(int j = 0; j<=chessBoard[i].length-1; j++)
+            {
+                if(chessBoard[i][j] == null)
+                    sb.append(" _ ");
+                else
+                    sb.append(" "+chessBoard[i][j]+" ");
+            }
+            if(i!= chessBoard.length-1)
+                sb.append("\n");
+        }
+        System.out.println(sb.toString());
+        System.out.println("=========");
     }
 
 

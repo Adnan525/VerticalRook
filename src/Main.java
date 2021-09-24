@@ -8,15 +8,13 @@ public class Main {
         List<List<Integer>> player1 = new ArrayList<>();
         List<List<Integer>> player2 = new ArrayList<>();
 
-        player1.add(Arrays.asList(2,0));
-        player1.add(Arrays.asList(2,1));
-        player1.add(Arrays.asList(2,2));
-        player1.add(Arrays.asList(2,3));
+        player1.add(Arrays.asList(0,0));
+        player1.add(Arrays.asList(1,1));
+        player1.add(Arrays.asList(1,2));
 
-        player2.add(Arrays.asList(3,0));
-        player2.add(Arrays.asList(3,1));
-        player2.add(Arrays.asList(3,2));
-        player2.add(Arrays.asList(3,3));
+        player2.add(Arrays.asList(0,1));
+        player2.add(Arrays.asList(0,2));
+        player2.add(Arrays.asList(2,0));
 
 //        PossibleMove test = Solve.getAllMoves(player1, player2, 4);
 //        System.out.println(test.numMoves);
@@ -28,6 +26,6 @@ public class Main {
 //            }
 //        }
 
-        System.out.println(Solve.solve(player1, player2, 4, 1));
+        System.out.println(Solve.solve(player1, player2, 3, 1));
     }
 }
