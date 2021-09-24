@@ -12,10 +12,12 @@ I roughly followed the mini max algorithm from game theory, perhaps it's a bit m
 # Example input:
 player1: List<List<Integer>>
 {{0,0},{1,1},{1,2}}
+ 
 player2: List<List<Integer>>
 {{0,1},{0,2},{2,0}}
 
 # Output:
+ ```
 1  2  2
 _  1  1
 2  _  _
@@ -46,3 +48,4 @@ Taking move: (0,2) ==> (1,2)
 _  1  1
 =========
 Winner : player-2
+ ```
